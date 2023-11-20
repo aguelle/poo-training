@@ -24,7 +24,7 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
@@ -36,10 +36,80 @@
                 Créer 2 étudiants différents.
             </p>
             <div class="exercice-sandbox">
-    
+                <?php
+                class Student
+                {
+                    public string $lastname = "";
+                    public string $firstname = "";
+                    public string $birthday = "";
+                    public string $level = "";
+                    public string $school = "";
+                    public function getFirstname(): string
+                    {
+                        return $this->firstname;
+                    }
+                    public function setFirstname(string $firstname): string
+                    {
+                        return $this->firstname = $firstname;
+                    }
+                    public function getLastname(): string
+                    {
+                        return $this->lastname;
+                    }
+                    public function setLatname(string $lastname): string
+                    {
+                        return $this->firstname = $lastname;
+                    }
+                    public function getBirthday(): string
+                    {
+                        return $this->birthday;
+                    }
+                    public function setBirthday(DateTime $birthday): DateTime
+                    {
+                        return $this->birthday = $birthday;
+                    }
+                    public function getLevel(): string
+                    {
+                        return $this->level;
+                    }
+                    public function setLevel(string $level): string
+                    {
+                        return $this->level = $level;
+                    }
+                    public function getSchool(): string
+                    {
+                        return $this->school;
+                    }
+                    public function setSchool(string $school): string
+                    {
+                        return $this->school = $school;
+                    }
+
+                }
+                $student1 = new Student();
+                $student1->lastname = "françois";
+                $student1->firstname = "pierre";
+                // $student1->age = "20";
+                $student1->birthday = "1999-01-01";
+                $student1->level = "BTS";
+
+                var_dump($student1);
+
+                $student2 = new Student();
+                $student2 = new Student();
+                $student2->lastname = "claude";
+                $student2->firstname = "françois";
+                // $student2->age = "18";
+                $student2->level = "Bac";
+
+                var_dump($student2);
+
+
+
+                ?>
             </div>
         </section>
-        
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -49,10 +119,16 @@
                 Modifier le niveau scolaire des 2 élèves et les afficher.
             </p>
             <div class="exercice-sandbox">
-    
+                <?php
+                $student1->setLevel("Licence");
+                $student2->setLevel("Master");
+                var_dump($student1, $student2);
+
+
+                ?>
             </div>
         </section>
-        
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
@@ -62,10 +138,17 @@
                 Mettez à jour l'instanciation des 2 élèves et afficher leur date de naissance.
             </p>
             <div class="exercice-sandbox">
+                <?php
+                // $student1->setBirthday("1999-01-01");
+                var_dump($student1);
+                // $student2->setBirthday("1999-05-24");
+                var_dump($student2);
+
+                ?>
 
             </div>
         </section>
-        
+
         <!-- QUESTION 4 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 4</h2>
@@ -79,7 +162,7 @@
 
             </div>
         </section>
-        
+
         <!-- QUESTION 5 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 5</h2>
@@ -89,10 +172,18 @@
                 Ajouter la propriété et ajouter la donnée sur les élèves.
             </p>
             <div class="exercice-sandbox">
+                <?php
+                $student1->setSchool("Creative");
+                $student2->setSchool("VIA");
+                $student1->getSchool();
+                $student2->getSchool();
+                var_dump($student1, $student2)
+
+                ?>
 
             </div>
         </section>
-        
+
         <!-- QUESTION 6 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 6</h2>
@@ -110,4 +201,5 @@
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
+
 </html>
