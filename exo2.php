@@ -1,3 +1,75 @@
+<?php
+class teacher
+{
+    private string $lastname; //(nom)
+    private string $firstname; //(prenom)
+    private array $subject;
+    private string $school;
+    public function __construct(string $lastname, string $firstname, array $subject = [], string $school = '')
+    {
+        $this->lastname = $lastname;
+        $this->firstname = $firstname;
+        $this->subject = $subject;
+        $this->school = $school;
+    }
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
+    public function setFirstname(string $firstname): string
+    {
+        return $this->firstname = $firstname;
+    }
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
+    public function setLastname(string $lastname): string
+    {
+        return $this->lastname = $lastname;
+    }
+
+    public function getSubject(): array
+    {
+        return $this->subject;
+    }
+    public function setSubject(array $subject)
+    {
+        $this->subject = $subject;
+    }
+    public function addSubject(string $subject): void
+    {
+        $this->subject[] = $subject;
+    }
+    public function removeSubject(string $subject): void
+    {
+        $index = array_search($subject, $this->subject);
+        if ($index !== false) unset($this->$subject[$index]);
+    }
+
+    public function displaySubject(): string
+    {
+        return implode(',', $this->subject);
+    }
+
+    public function getSchool(): string
+    {
+        return $this->school;
+    }
+    public function setSchool(string $school)
+    {
+        return $this->school = $school;
+    }
+    // public function getAge(): int
+    // {
+    //     return $this->birthdate->diff(new DateTime)->y;
+    // }
+    public function introduce(): string
+    {
+        return "Bonjour, je m'appelle {$this->firstname} {$this->lastname} et j'enseigne à l'école {$this->school} les matières suivantes : {$this->displaySubject()}.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +96,7 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
@@ -36,11 +108,17 @@
                 Créer 2 professeurs différents.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                $teacher1 = new teacher("Jarre", "jean-michel");
+
+                $teacher2 = new teacher("lenormand", "gérard");
+                var_dump($teacher1, $teacher2);
+                ?>
+
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -52,11 +130,19 @@
                 Afficher les écoles des 2 professeurs.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                // $teacher1->setSchool("sainte-marie-joseph");
+                $teacher1->setSchool("sainte-algue");
+                $teacher2->setSchool("sainte-marie-joseph");
+                echo $teacher1->getSchool();
+                echo "<br>";
+                echo $teacher2->getSchool();
+
+                ?>
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
@@ -66,7 +152,12 @@
                 Tester l'ajout, la suppression et l'affichage sur chacun des profs.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+                $teacher1->addSubject('Français');
+                $teacher1->addSubject("anglais");
+                var_dump($teacher1);
+                echo $teacher1->displaySubject();
+                ?>
             </div>
         </section>
 
@@ -81,11 +172,12 @@
                 Afficher la phrase de présentation des 2 profs.
             </p>
             <div class="exercice-sandbox">
-                
+                <?= $teacher1->introduce() ?>
             </div>
         </section>
 
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
+
 </html>
